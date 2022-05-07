@@ -45,6 +45,9 @@ namespace AppointmentKeeper2.Forms
             this.btnExit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAppointments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +74,7 @@ namespace AppointmentKeeper2.Forms
             this.dgvCustomers.AllowUserToResizeRows = false;
             this.dgvCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomers.Location = new System.Drawing.Point(50, 523);
+            this.dgvCustomers.Location = new System.Drawing.Point(50, 545);
             this.dgvCustomers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvCustomers.MultiSelect = false;
             this.dgvCustomers.Name = "dgvCustomers";
@@ -122,7 +125,7 @@ namespace AppointmentKeeper2.Forms
             // btnCustDelete
             // 
             this.btnCustDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustDelete.Location = new System.Drawing.Point(1328, 605);
+            this.btnCustDelete.Location = new System.Drawing.Point(1328, 627);
             this.btnCustDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCustDelete.Name = "btnCustDelete";
             this.btnCustDelete.Size = new System.Drawing.Size(153, 52);
@@ -134,7 +137,7 @@ namespace AppointmentKeeper2.Forms
             // btnCustEdit
             // 
             this.btnCustEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustEdit.Location = new System.Drawing.Point(1328, 523);
+            this.btnCustEdit.Location = new System.Drawing.Point(1328, 545);
             this.btnCustEdit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCustEdit.Name = "btnCustEdit";
             this.btnCustEdit.Size = new System.Drawing.Size(153, 52);
@@ -146,7 +149,7 @@ namespace AppointmentKeeper2.Forms
             // btnCustAdd
             // 
             this.btnCustAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustAdd.Location = new System.Drawing.Point(1135, 523);
+            this.btnCustAdd.Location = new System.Drawing.Point(1135, 545);
             this.btnCustAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCustAdd.Name = "btnCustAdd";
             this.btnCustAdd.Size = new System.Drawing.Size(153, 52);
@@ -250,18 +253,52 @@ namespace AppointmentKeeper2.Forms
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(57, 478);
+            this.label3.Location = new System.Drawing.Point(43, 503);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(172, 37);
             this.label3.TabIndex = 15;
             this.label3.Text = "Customers";
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(381, 511);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(285, 26);
+            this.txtSearch.TabIndex = 16;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(673, 503);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(153, 37);
+            this.btnSearch.TabIndex = 17;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(834, 503);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(153, 37);
+            this.btnReset.TabIndex = 18;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1558, 1090);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnExit);
@@ -308,5 +345,8 @@ namespace AppointmentKeeper2.Forms
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnReset;
     }
 }

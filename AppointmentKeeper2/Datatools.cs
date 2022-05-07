@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AppointmentKeeper2
 {
-    static class Datatools
+    class Datatools
     {
         //Create DB connection
         static MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder
@@ -23,7 +23,6 @@ namespace AppointmentKeeper2
             SslMode = MySqlSslMode.Required,
         };
         public static MySqlConnection conn = new MySqlConnection(builder.ConnectionString);
-
 
         public static int validateLogin(string userName, string password)
         {
@@ -64,6 +63,34 @@ namespace AppointmentKeeper2
                         "JOIN city ON address.cityId = city.cityId " +
                         "JOIN country ON city.countryId = country.countryId";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
+                adap.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error getting customer table\n\n" + ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return dt;
+        }
+        public static DataTable searchCustomer(string name)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                conn.Open();
+                string query =
+                        "SELECT customerId AS ID, customerName AS name, phone, address, city, country FROM customer " +
+                        "JOIN address ON customer.addressId = address.AddressId " +
+                        "JOIN city ON address.cityId = city.cityId " +
+                        "JOIN country ON city.countryId = country.countryId " +
+                        "WHERE INSTR(customerName ,@name) > 0";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@name", name);
                 MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                 adap.Fill(dt);
             }
@@ -325,7 +352,6 @@ namespace AppointmentKeeper2
             return customer;
 
         }
-
         public static bool checkDuplicateCustomer(CustomerDetails customer)
         {
             bool containsDuplicate = false;
@@ -366,7 +392,6 @@ namespace AppointmentKeeper2
 
             return containsDuplicate;
         }
-
         public static DataTable getAppointment(int appId)
         {
             DataTable dt = new DataTable();

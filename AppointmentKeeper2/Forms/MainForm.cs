@@ -182,5 +182,21 @@ namespace AppointmentKeeper2.Forms
             }
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if(System.String.IsNullOrEmpty(txtSearch.Text))
+            {
+                MessageBox.Show("Enter a customer name in the search field");
+            }
+            else
+            {
+                dgvCustomers.DataSource = Datatools.searchCustomer(txtSearch.Text);
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            buildCustomerTable();
+        }
     }
 }

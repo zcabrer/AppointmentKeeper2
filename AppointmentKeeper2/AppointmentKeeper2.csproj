@@ -117,6 +117,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data.cs" />
     <Compile Include="Datatools.cs" />
     <Compile Include="Forms\AppAdd.cs">
       <SubType>Form</SubType>
